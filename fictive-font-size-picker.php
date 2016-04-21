@@ -26,7 +26,7 @@ function wpdocs_theme_name_scripts() {
 
 	wp_register_script( 'FSP', FICTIVE_FONT_SIZE_PICKER_URL . 'assets/js/fictive-font-size-picker.js', array('jquery'), '1.0.0', true );
 	wp_localize_script( 'FSP', 'FSP_data', array( 'ajax_url' => admin_url('admin-ajax.php') ) );
-	wp_enqueue_script( 'FSP' );
+	// wp_enqueue_script( 'FSP' );
 }
 add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 
@@ -34,6 +34,7 @@ add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 require_once 'widget-font-size-picker.php';
 require_once 'classes/font-size-picker-ajax.php';
 
+// add current font size to body tag on load
 function fictive_add_body_class( $classes ){
 	$current_font_size = isset( $_SESSION['fictive_font_size'] ) ? $_SESSION['fictive_font_size'] : 'font-regular';
 	$classes[] = $current_font_size;
